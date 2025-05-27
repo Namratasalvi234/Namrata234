@@ -1,0 +1,98 @@
+1. Create a simple app
+Make a folder, e.g., myapp, with these files:
+
+app.js:
+
+js
+Copy
+Edit
+const http = require('http');
+const PORT = 3000;
+
+const server = http.createServer((req, res) => {
+  res.end('Hello from Docker!');
+});
+
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+package.json:
+
+json
+Copy
+Edit
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {}
+}
+2. Create a Dockerfile
+In the same folder, create a file named Dockerfile:
+
+dockerfile
+Copy
+Edit
+# Use official Node.js runtime as a parent image
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy app files
+COPY . .
+
+# Expose port 3000
+EXPOSE 3000
+
+# Run the app
+CMD ["npm", "start"]
+3. Build the Docker image
+Open terminal, navigate to myapp folder:
+
+bash
+Copy
+Edit
+docker build -t your-dockerhub-username/myapp:1.0 .
+4. Test the image locally
+Run the container:
+
+bash
+Copy
+Edit
+docker run -p 3000:3000 your-dockerhub-username/myapp:1.0
+Open http://localhost:3000 in your browser to see "Hello from Docker!"
+
+5. Push the image to Docker Hub
+Log in to Docker Hub from your terminal:
+
+bash
+Copy
+Edit
+docker login
+Push your image:
+
+bash
+Copy
+Edit
+docker push your-dockerhub-username/myapp:1.0
+Summary
+Step	Command/Action
+Create app files	app.js, package.json
+Write Dockerfile	See example
+Build image	docker build -t your-dockerhub-username/myapp:1.0 .
+Run locally	docker run -p 3000:3000 your-dockerhub-username/myapp:1.0
+Login to Docker Hub	docker login
+Push image	docker push your-dockerhub-username/myapp:1.0
+
+If you want, I can also help with a Python, Java, or any other app! Would you like that?
+
+
+
+
+
+
+Attach

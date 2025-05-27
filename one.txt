@@ -1,5 +1,19 @@
-This is one.txt under push pull operation
+# a. Clone a remote repository
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
 
-after changes done
-namrata
- 
+# b. Create a new branch 'dev'
+git checkout -b dev
+
+# c. Modify a file (replace 'file.txt' with your file)
+echo "Some changes" >> file.txt
+git add file.txt
+git commit -m "Modified file.txt with some changes"
+
+# d. Merge 'dev' into 'main'
+git checkout main
+git merge dev
+
+# e. Push the merged 'main' branch to the remote repository
+git push origin main
+
